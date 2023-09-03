@@ -1,29 +1,24 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <link href="src/css/style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINN AVENTURAS</title>
+    <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
+    <div style="display: flex;">
+        <div>
+            <table id="map-table"></table>
 
-<div class="game-container">
-    <canvas class="game-canvas" width="352" height="198"></canvas>
-</div>
+        </div>
+        <div>
+            <button id="ataque" onclick="attackEnemy()">Attack</button>
+            <script src="./src/js/script.js"></script>
+            <script src="./src/js/ataque.js"></script>
+        </div>
 
-<script src="src/js/utils.js"></script>
-<script src="src/js/Overworld.js"></script>
-<script src="src/js/GameObject.js"></script>
-
-
-<script src="src/js/Sprite.js"></script>
-<script src="src/js/OverworldMap.js"></script>
-
-<script src="src/js/init.js"></script>
+    </div>
 
 
 </body>

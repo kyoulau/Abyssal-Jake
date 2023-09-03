@@ -1,24 +1,56 @@
-body {
-    background: orange;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+#map-table {
+  background-image: url("/src/img/mapaDungeon.png");
+  background-size: cover;
+  width: 347px;
+  height: 324px;
+  max-width: 347px;
+  max-height: 324px;
+}
+/* 1 - parede
+0 - andar */
+
+
+
+.tile-0{
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid yellow;
+}
+.tile-1{
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid black;
+}
+.tile-2 {
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid red;
+}
+
+.tile-3 {
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid blue;
+}
+
+#character {
+  max-height: 16px;
 }
 
 * {
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  image-rendering: pixelated;
 }
 
-.game-container {
-    position: relative;
-    width: 352px;
-    height: 198px;
-    margin: 0 auto;
-    margin-top: 20px;
-    outline: 1px solid white;
-    transform: scale(3) translateY(50%);
+.button-show{
+  display: contents;
 }
 
-.game-container canvas {
-    image-rendering: pixelated;
+.button-hidden {
+  display: none;
 }
