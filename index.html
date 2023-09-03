@@ -6,8 +6,8 @@
     <title>FINN AVENTURAS</title>
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
-<body>
-    <div class="interface">
+<body id="tela">
+    <div class="interface" >
         <div>
             <h1>Controles</h1>
             <p> Use as setas do teclado</p>
@@ -21,11 +21,17 @@
 
         <div style="margin-top: 20px;">
             <h1>Inventário</h1>
-            <h4> Poção de Cura - 0x <button>Usar</button>   </h4>
-            <h4>Lanterna 1x</h4>
+            <h4>Lanterna 1x</h4>            
+            <h4 id="pot"> Poção de Cura - 0x </h4>
+
             <h4>Espada 1x</h4>
             <h4>Machado 1x</h4>
             <h4>Braço de aço 1x</h4>
+        </div>
+
+        <div>
+            <h1>Status do Finn</h1>
+            <h4 id="hp">HP : 100</h4>   
         </div>
 
     </div>
@@ -43,6 +49,12 @@
     
         </div>
     </main>
+
+    <div>
+        <h1>Log</h1>
+
+        <div id="log">...</div>
+    </div>
 
 
 

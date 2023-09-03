@@ -33,6 +33,13 @@
   border: 1px solid blue;
 }
 
+.tile-4{
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid pink;
+}
+
 #character {
   max-height: 16px;
 }
@@ -72,6 +79,19 @@ main {
 
 }
 
-body {
+body, #tela {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#tela_over {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.game_over {
+  width: 200px;
+  height: 200px;
 }
