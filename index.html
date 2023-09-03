@@ -7,18 +7,43 @@
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
-    <div style="display: flex;">
+    <div class="interface">
         <div>
-            <table id="map-table"></table>
+            <h1>Controles</h1>
+            <p> Use as setas do teclado</p>
+            <h4>↑ - Ir para cima</h4>
+            <h4>↓ - Ir para baixo</h4>
+            <h4>← Ir para esquerda</h4>
+            <h4>→ Ir para direita</h4>
+            <button id="ataque" onclick="attackEnemy()">Attack</button>
 
         </div>
-        <div>
-            <button id="ataque" onclick="attackEnemy()">Attack</button>
-            <script src="./src/js/script.js"></script>
-            <script src="./src/js/ataque.js"></script>
+
+        <div style="margin-top: 20px;">
+            <h1>Inventário</h1>
+            <h4> Poção de Cura - 0x <button>Usar</button>   </h4>
+            <h4>Lanterna 1x</h4>
+            <h4>Espada 1x</h4>
+            <h4>Machado 1x</h4>
+            <h4>Braço de aço 1x</h4>
         </div>
 
     </div>
+
+    
+    <main>
+        <div style="display: flex;">
+            <div>
+                <table id="map-table"></table>
+    
+            </div>
+            <div>
+                <script src="./src/js/script.js"></script>
+            </div>
+    
+        </div>
+    </main>
+
 
 
 </body>

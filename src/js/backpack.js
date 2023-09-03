@@ -1,13 +1,14 @@
-let mochila = [];
+let mochila = ["Lanterna","Bússola", "Kit de primeiros socorros" ];
 
-function adicionarItemNaMochila(mochila, item) {
+console.log("Essa é sua mochila de itens! ")
+console.log(mochila);
+
+
+function adicionarItemNaMochila(item) {
     mochila.push(item);
-    return
 }
 
+adicionarItemNaMochila(mochila, "Poção");
 
-mochila = adicionarItemNaMochila(minhaMochila, "Lanterna");
-mochila = adicionarItemNaMochila(minhaMochila, "Bússola");
-mochila = adicionarItemNaMochila(minhaMochila, "Kit de primeiros socorros");
+console.log(minhaLista);
 
-console.log(minhaMochila);

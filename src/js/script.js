@@ -72,18 +72,23 @@ function mover_personagem(direction) {
     newCharacterRow <= numRows &&
     newCharacterColumn >= 0 &&
     newCharacterColumn <= numCols &&
-    mapArray[newCharacterColumn][newCharacterRow] === 3) {
-    attackButton.classList.remove("button-hidden");
-    attackButton.classList.add("button-show")
+    mapArray[newCharacterColumn][newCharacterRow] === 3
+    ) {
+
     console.log("área de inimigo")
     characterCell.innerHTML = '';
 
     // Atualiza as coordenadas do personagem
     characterX = newCharacterRow;
     characterY = newCharacterColumn;
-    mapArray[newCharacterColumn + 1][newCharacterRow] = 1
-    mapArray[newCharacterColumn][newCharacterRow - 1] = 1
-    mapArray[newCharacterColumn][newCharacterRow + 1] = 1
+
+    if (Enemy1.vivo == true){
+      attackButton.classList.remove("button-hidden");
+      attackButton.classList.add("button-show")
+      mapArray[newCharacterColumn + 1][newCharacterRow] = 1;
+      mapArray[newCharacterColumn][newCharacterRow - 1] = 1;
+      mapArray[newCharacterColumn][newCharacterRow + 1] = 1;
+    }
 
     console.log(mapArray)
 
@@ -92,6 +97,21 @@ function mover_personagem(direction) {
   }
 
 }
+
+const Finn = {
+  nome: "Herói",
+  hp: 100,
+  vivo: true,
+  atk: getRandomInt(10, 40),
+};
+
+//objeto inimigo
+const Enemy1 = {
+  nome: "Inimigo gelado",
+  hp: 100,
+  vivo: true,
+  atk:  getRandomInt(5, 30),
+};
 
 // Create a 2D array to represent the map
 mapArray = [
@@ -111,9 +131,9 @@ mapArray = [
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-  [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-  [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
-  [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
@@ -140,7 +160,19 @@ function createCharacter() {
 function createEnemy() {
   const enemyCell = mapa.rows[golemY].cells[golemX];
   enemyCell.innerHTML = '<div id="character" style="height: 16px"><img src="./src/img/IceGolemIdle.gif" height="16px" width="16px"></div>';
+
+
+
+  if (Enemy1.vivo == false){
+    enemyCell.innerHTML = '';
+    mapArray[golemY][golemX] = 0
+
+  }
+
+
 }
+
+
 
 //movimentação
 
@@ -166,3 +198,86 @@ console.log(mapArray);
 createMap();
 createCharacter();
 createEnemy();
+
+
+//#############################################
+
+//objeto finn
+
+
+
+function attackEnemy() {
+  finnAttack();
+  enemyAttack();
+
+  if (Enemy1.hp <= 0){
+    Enemy1.vivo = false;
+    let newCharacterColumn = characterY;
+    let newCharacterRow = characterX;
+    characterX = newCharacterRow;
+    characterY = newCharacterColumn;
+
+    console.log("Morreu :(")
+    createCharacter();
+
+    console.log(mapArray)
+
+    clearEnemy();
+    mapArray[golemX][golemY] = 0;
+    
+    mapArray[newCharacterColumn + 1][newCharacterRow] = 0;
+    mapArray[newCharacterColumn][newCharacterRow - 1] = 0;
+    mapArray[newCharacterColumn][newCharacterRow + 1] = 0;
+
+    createCharacter();
+
+    attackButton.classList.remove("button-show");
+    attackButton.classList.add("button-hidden")
+
+  }
+
+  if (Finn.hp <= 0){
+    Finn.vivo = false;
+    console.log("Morreu o finn que trise :(")
+  }
+  
+}
+
+function finnAttack(){
+  Enemy1.hp = Enemy1.hp - Finn.atk
+}
+
+function enemyAttack(){
+  Finn.hp = Finn.hp - Enemy1.atk
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function clearEnemy(){
+  
+  const above_Enemy = mapa.rows[golemY - 1].cells[golemX];
+  const belowEnemy = mapa.rows[golemY + 1].cells[golemX];
+  const leftEnemy = mapa.rows[golemY].cells[golemX - 1];
+  const rightEnemy = mapa.rows[golemY].cells[golemX + 1];
+  const deadEnemy = mapa.rows[golemY].cells[golemX]
+
+  above_Enemy.classList.remove("tile-3")
+  belowEnemy.classList.remove("tile-3")
+  leftEnemy.classList.remove("tile-3")
+  rightEnemy.classList.remove("tile-3")
+
+  deadEnemy.classList.remove("tile-2")
+  deadEnemy.classList.add("tile-0")
+
+  above_Enemy.classList.add("tile-0")
+  belowEnemy.classList.add("tile-0")
+  leftEnemy.classList.add("tile-0")
+  rightEnemy.classList.add("tile-0")
+
+  createEnemy()
+
+}
