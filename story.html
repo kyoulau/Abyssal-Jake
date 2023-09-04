@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,12 @@
 
 <body class="grid bg-black text-white justify-center items-center h-[100vh]">
     <div class="m-[100px] grid gap-[50px]">
-        <div  id="cutscene-text">
-            <!-- Text content for the cutscene will be displayed here -->
+        <div id="cutscene">
         </div>
-        <button id="next-button">Next</button>
-    
+        <button id="button">Next</button>
+
         <script>
-            const textElements = [
+            const trechos = [
                 "Uma vez, Finn e seu cachorro Jake sairam para explorar...",
                 "Era um dia monotono, sem novidades..",
                 "Jake é seu melhor amigo, presente desde que era bebê, seu amor pelo cachorro era infindável.",
@@ -24,28 +24,29 @@
                 "Finn não podia deixar seu melhor amigo sozinho, então pulou no poço ao seu resgate.",
                 "Era uma masmorra."
             ];
-    
+
             let currentIndex = 0;
-            const cutsceneText = document.getElementById("cutscene-text");
-            const nextButton = document.getElementById("next-button");
-    
-            function displayNextText() {
-                if (currentIndex < textElements.length) {
-                    cutsceneText.textContent = textElements[currentIndex];
-                    currentIndex++;
+            const texto = document.getElementById("cutscene");
+            const proximo = document.getElementById("button");
+
+            function mostrarProximo() {
+                if (i < trechos.length) {
+                    texto.textContent = trechos[i];
+                    i++;
                 } else {
                     window.location.assign("./game.html");
-    
+
                 }
             }
-    
-            nextButton.addEventListener("click", displayNextText);
-    
-            // Display the first text when the page loads
-            displayNextText();
+
+            proximo.addEventListener("click", mostrarProximo);
+
+            mostrarProximo();
         </script>
     </div>
 
 </body>
+
 </html>
+
 </html>

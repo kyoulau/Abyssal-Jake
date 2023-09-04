@@ -11,47 +11,41 @@
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid yellow;
 }
 .tile-1{
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid black;
 }
 .tile-2 {
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid red;
 }
 
 .tile-3 {
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid blue;
 }
 
 .tile-4{
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid pink;
 }
 
 .tile-5{
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid brown;
 }
 
 .tile-6{
   min-width: 16px;
   max-height: 16px;
   height: 16px;
-  border: 1px solid red;
+ 
 }
 
 #character {

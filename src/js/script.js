@@ -109,14 +109,13 @@ function mover_personagem(direction) {
 
     createCharacter()
   }
-  else if(
+  else if (
     newCharacterRow >= 0 &&
     newCharacterRow <= numRows &&
     newCharacterColumn >= 0 &&
     newCharacterColumn <= numCols &&
     mapArray[newCharacterColumn][newCharacterRow] === 5
-  )
-  {
+  ) {
     characterCell.innerHTML = "";
 
     characterX = newCharacterRow;
@@ -128,14 +127,13 @@ function mover_personagem(direction) {
 
   }
 
-  else if(
+  else if (
     newCharacterRow >= 0 &&
     newCharacterRow <= numRows &&
     newCharacterColumn >= 0 &&
     newCharacterColumn <= numCols &&
     mapArray[newCharacterColumn][newCharacterRow] === 6
-  )
-  {
+  ) {
     characterCell.innerHTML = "";
 
     characterX = newCharacterRow;
