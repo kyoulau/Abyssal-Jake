@@ -1,5 +1,5 @@
 #map-table {
-  background-image: url("/src/img/mapaDungeon.png");
+  background-image: url('../img/mapaDungeon.png');
   background-size: cover;
   width: 347px;
   height: 324px;
@@ -38,6 +38,20 @@
   max-height: 16px;
   height: 16px;
   border: 1px solid pink;
+}
+
+.tile-5{
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid brown;
+}
+
+.tile-6{
+  min-width: 16px;
+  max-height: 16px;
+  height: 16px;
+  border: 1px solid red;
 }
 
 #character {

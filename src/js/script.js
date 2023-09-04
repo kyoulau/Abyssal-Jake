@@ -11,15 +11,15 @@ let characterY = 17;
 const golemX = 7;
 const golemY = 11;
 
-const pocaoX = 7;
-const pocaoY = 7;
+const pocaoX = 5;
+const pocaoY = 17;
 
 let status_vida = document.getElementById("hp");
 
 let quant_pot = document.getElementById("pot");
 
 const pocao = {
-  cura: 10,
+  cura: 20,
   state: false,
   quantidade: 0,
 };
@@ -55,21 +55,18 @@ function mover_personagem(direction) {
   }
 
   if (
-    //Se o indice do array for zero, significa que deve andar
     newCharacterRow >= 0 &&
     newCharacterRow <= numRows &&
     newCharacterColumn >= 0 &&
     newCharacterColumn <= numCols &&
     mapArray[newCharacterColumn][newCharacterRow] === 0
   ) {
-    // Remove o personagem da célula atual
+
     characterCell.innerHTML = "";
 
-    // Atualiza as coordenadas do personagem
     characterX = newCharacterRow;
     characterY = newCharacterColumn;
 
-    // Adiciona o personagem à nova célula
     createCharacter();
   } else if (
     newCharacterRow >= 0 &&
@@ -80,7 +77,6 @@ function mover_personagem(direction) {
   ) {
     characterCell.innerHTML = "";
 
-    // Atualiza as coordenadas do personagem
     characterX = newCharacterRow;
     characterY = newCharacterColumn;
 
@@ -91,9 +87,6 @@ function mover_personagem(direction) {
       mapArray[newCharacterColumn][newCharacterRow - 1] = 1;
       mapArray[newCharacterColumn][newCharacterRow + 1] = 1;
     }
-
-
-    // Adiciona o personagem à nova célula
     createCharacter();
   } else if (
     newCharacterRow >= 0 &&
@@ -116,6 +109,43 @@ function mover_personagem(direction) {
 
     createCharacter()
   }
+  else if(
+    newCharacterRow >= 0 &&
+    newCharacterRow <= numRows &&
+    newCharacterColumn >= 0 &&
+    newCharacterColumn <= numCols &&
+    mapArray[newCharacterColumn][newCharacterRow] === 5
+  )
+  {
+    characterCell.innerHTML = "";
+
+    characterX = newCharacterRow;
+    characterY = newCharacterColumn;
+
+    gameWindow = document.getElementById("tela");
+
+    gameWindow.innerHTML = `<div id="tela_over" class="grid items-center justify-center"><div><h2>Finn salvou o Jake! Você Conseguiu abrir a porta da masmorra!</h2><p> Fim de jogo!</p></div><div><img src="src/img/win.gif"><button class="button-show" onClick="window.location.reload()">Retry</button></div></div>`
+
+  }
+
+  else if(
+    newCharacterRow >= 0 &&
+    newCharacterRow <= numRows &&
+    newCharacterColumn >= 0 &&
+    newCharacterColumn <= numCols &&
+    mapArray[newCharacterColumn][newCharacterRow] === 6
+  )
+  {
+    characterCell.innerHTML = "";
+
+    characterX = newCharacterRow;
+    characterY = newCharacterColumn;
+
+    gameWindow = document.getElementById("tela");
+
+    gameWindow.innerHTML = `<div id="tela_over" class="grid items-center justify-center"><div><h2>Finn caiu na armadilha.</h2><p> Game Over!</p></div><div><div style="width: 312px; height: 312px;"><img src="src/img/spike_trap.gif"></div><button class="button-show" onClick="window.location.reload()">Retry</button></div></div>`
+
+  }
 }
 
 const Finn = {
@@ -125,7 +155,6 @@ const Finn = {
   atk: getRandomInt(10, 40),
 };
 
-//objeto inimigo
 const Enemy1 = {
   nome: "Inimigo gelado",
   hp: 100,
@@ -133,7 +162,6 @@ const Enemy1 = {
   atk: getRandomInt(5, 30),
 };
 
-// Create a 2D array to represent the map
 mapArray = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -142,7 +170,7 @@ mapArray = [
   [1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [1, 1, 1, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
@@ -151,9 +179,9 @@ mapArray = [
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
-  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+  [1, 1, 0, 0, 0, 4, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 5, 5],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 5, 5],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
@@ -173,13 +201,13 @@ function createMap() {
 function createCharacter() {
   const characterCell = mapa.rows[characterY].cells[characterX];
   characterCell.innerHTML =
-    '<div id="character" style="height: 16px"><img src="./src/img/finnIdle.gif" height="16px" width="16px"></div>';
+    '<div id="character" style="height: 16px"><img src="./src/img/finnIdle.gif" style="height: 16px;" width="16px"></div>';
 }
 
 function createEnemy() {
   const enemyCell = mapa.rows[golemY].cells[golemX];
   enemyCell.innerHTML =
-    '<div id="character" style="height: 16px"><img src="./src/img/IceGolemIdle.gif" height="16px" width="16px"></div>';
+    '<div id="character" style="height: 16px"><img src="./src/img/IceGolemIdle.gif" style="height: 16px;" width="16px"></div>';
 
   if (Enemy1.vivo == false) {
     enemyCell.innerHTML = "";
@@ -218,10 +246,6 @@ createCharacter();
 createEnemy();
 createPotion();
 
-//#############################################
-
-//objeto finn
-
 function attackEnemy() {
   finnAttack();
   enemyAttack();
@@ -231,7 +255,7 @@ function attackEnemy() {
   if (Finn.hp <= 0) {
     gameWindow = document.getElementById("tela");
 
-    gameWindow.innerHTML = `<div id="tela_over" style="display: grid"><h1>O finn morreu e não pôde salvar seu amigo.</h1><h1> GAME OVER</h1><div><img class="game_over" src="src/img/gameover.gif"><button class="button-show" onClick="window.location.reload()">Retry</button></div></div>`
+    gameWindow.innerHTML = `<div id="tela_over" class="grid items-center justify-center"><div><h2>Finn morreu em confronto.</h2><p> Game Over!</p></div><div><div style="width: 312px; height: 312px;"><img src="src/img/gameover.gif"></div><button class="button-show" onClick="window.location.reload()">Retry</button></div></div>`
   }
 
   if (Enemy1.hp <= 0) {
@@ -277,11 +301,11 @@ function finnAttack() {
 function enemyAttack() {
   Finn.hp = Finn.hp - Enemy1.atk;
   console.log(Finn.hp)
-    
+
   let log = document.getElementById("log");
 
   log.innerHTML += `<h4> Inimigo atacou!</h4>`
-  
+
 }
 
 function getRandomInt(min, max) {

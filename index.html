@@ -1,62 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINN AVENTURAS</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body id="tela">
-    <div class="interface" >
-        <div>
-            <h1>Controles</h1>
-            <p> Use as setas do teclado</p>
-            <h4>↑ - Ir para cima</h4>
-            <h4>↓ - Ir para baixo</h4>
-            <h4>← Ir para esquerda</h4>
-            <h4>→ Ir para direita</h4>
-            <button id="ataque" onclick="attackEnemy()">Attack</button>
 
-        </div>
+<body class="grid bg-black items-center justify-center h-[100vh]">
 
-        <div style="margin-top: 20px;">
-            <h1>Inventário</h1>
-            <h4>Lanterna 1x</h4>            
-            <h4 id="pot"> Poção de Cura - 0x </h4>
 
-            <h4>Espada 1x</h4>
-            <h4>Machado 1x</h4>
-            <h4>Braço de aço 1x</h4>
-        </div>
+    <audio id="myAudio" autoplay="autoplay">
+        <source src="./src/mp3/asgore.mp4" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-        <div>
-            <h1>Status do Finn</h1>
-            <h4 id="hp">HP : 100</h4>   
-        </div>
-
-    </div>
-
-    
-    <main>
-        <div style="display: flex;">
-            <div>
-                <table id="map-table"></table>
-    
-            </div>
-            <div>
-                <script src="./src/js/script.js"></script>
-            </div>
-    
-        </div>
-    </main>
-
-    <div>
-        <h1>Log</h1>
-
-        <div id="log">...</div>
+    <div class="grid text-white">
+        <h1 class="font-mono">Adventure time</p>
+            <div class="mt-[50px]"><a href="story.html">Play</a></div>
     </div>
 
 
+    <script>
+        setTimeout(function () {
+            window.location.reload();
+        }, 17000);
+    </script>
 
 </body>
+
 </html>
